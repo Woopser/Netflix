@@ -113,7 +113,7 @@ class ActeursTableSeeder extends Seeder
                 'age'=>62,
                 'taille'=>175,
                 'prenom'=>'Kyle',
-                'image'=>'image/acteurs/LauraDern.jpg',
+                'image'=>'image/acteurs/KyleGass.jpg',
             ],
             [
                 'nom'=> 'Myers',
