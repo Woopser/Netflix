@@ -34,6 +34,7 @@
     </header>
     <!-- END OF HEADER -->
     
+    <a href="{{ route('acteurs.create') }}"></a>
     <!-- MAIN CONTAINER -->
     <section class="main-container" >
       <div class="location" id="home">

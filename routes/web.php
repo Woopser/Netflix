@@ -22,3 +22,15 @@ Route::get('films',
 Route::get('zoom', function () {
     return view('zoom');
 });
+
+/*AFFICHER LE FORMULAIRE D'AJOUT D'UN ACTEUR*/
+Route::get('acteurs/create', 
+[ActeursController::class, 'create'])->name('acteurs.create');
+
+/*Traiter les champs du form*/
+Route::post('acteurs', 
+[ActeursController::class, 'store'])->name('acteurs.store');
+
+/*Afficher le form de creation de Acteur_film*/
+Route::get('acteurs/createActeurFilm', 
+[ActeursController::class, 'createActeurFilm'])->name('acteurs.createActeurFilm');
