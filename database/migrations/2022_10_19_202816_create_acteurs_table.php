@@ -19,7 +19,7 @@ return new class extends Migration
             $table->float('age');
             $table->float('taille');
             $table->string('prenom',100);
-            $table->string('image',255);
+            $table->string('image',3000);
             $table->timestamps();
         });
     }

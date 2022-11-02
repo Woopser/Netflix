@@ -17,76 +17,76 @@ class ActeursFilmsSeeder extends Seeder
     {
         DB::table('acteur_film')->insert([
             [
-                'films_id'=>'1',
-                'acteurs_id'=>'1',
+                'film_id'=>'1',
+                'acteur_id'=>'1',
             ],
             [
-                'films_id'=>'1',
-                'acteurs_id'=>'2',
+                'film_id'=>'1',
+                'acteur_id'=>'2',
             ],
             [
-                'films_id'=>'2',
-                'acteurs_id'=>'3',
+                'film_id'=>'2',
+                'acteur_id'=>'3',
             ],
             [
-                'films_id'=>'2',
-                'acteurs_id'=>'4',
+                'film_id'=>'2',
+                'acteur_id'=>'4',
             ],
             [
-                'films_id'=>'3',
-                'acteurs_id'=>'5',
+                'film_id'=>'3',
+                'acteur_id'=>'5',
             ],
             [
-                'films_id'=>'4',
-                'acteurs_id'=>'6',
+                'film_id'=>'4',
+                'acteur_id'=>'6',
             ],
             [
-                'films_id'=>'4',
-                'acteurs_id'=>'7',
+                'film_id'=>'4',
+                'acteur_id'=>'7',
             ],
             [
-                'films_id'=>'5',
-                'acteurs_id'=>'8',
+                'film_id'=>'5',
+                'acteur_id'=>'8',
             ],
             [
-                'films_id'=>'5',
-                'acteurs_id'=>'9',
+                'film_id'=>'5',
+                'acteur_id'=>'9',
             ],
             [
-                'films_id'=>'6',
-                'acteurs_id'=>'10',
+                'film_id'=>'6',
+                'acteur_id'=>'10',
             ],
             [
-                'films_id'=>'6',
-                'acteurs_id'=>'11',
+                'film_id'=>'6',
+                'acteur_id'=>'11',
             ],
             [
-                'films_id'=>'7',
-                'acteurs_id'=>'12',
+                'film_id'=>'7',
+                'acteur_id'=>'12',
             ],
             [
-                'films_id'=>'8',
-                'acteurs_id'=>'13',
+                'film_id'=>'8',
+                'acteur_id'=>'13',
             ],
             [
-                'films_id'=>'8',
-                'acteurs_id'=>'14',
+                'film_id'=>'8',
+                'acteur_id'=>'14',
             ],
             [
-                'films_id'=>'9',
-                'acteurs_id'=>'15',
+                'film_id'=>'9',
+                'acteur_id'=>'15',
             ],
             [
-                'films_id'=>'9',
-                'acteurs_id'=>'16',
+                'film_id'=>'9',
+                'acteur_id'=>'16',
             ],
             [
-                'films_id'=>'10',
-                'acteurs_id'=>'17',
+                'film_id'=>'10',
+                'acteur_id'=>'17',
             ],
             [
-                'films_id'=>'10',
-                'acteurs_id'=>'18',
+                'film_id'=>'10',
+                'acteur_id'=>'18',
             ],
         ]);
     }

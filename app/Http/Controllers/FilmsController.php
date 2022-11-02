@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Film;
+use Illuminate\Support\Facades\Log;
 
 class FilmsController extends Controller
 {
@@ -25,7 +26,7 @@ class FilmsController extends Controller
      */
     public function create()
     {
-        //
+        return view('films.create');
     }
 
     /**
@@ -36,7 +37,15 @@ class FilmsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $film = new Film($request->all());
+            $film->save();
+            return redirect()->route('films.index');
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('films.index');
+        }
     }
 
     /**

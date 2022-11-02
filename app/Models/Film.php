@@ -8,6 +8,9 @@ use App\Models\Acteur;
 
 class Film extends Model
 {
+
+    protected $fillable = ['nom','duree', 'cote', 'realisateur','genre','image'];
+
     use HasFactory;
     public function acteurs(){
         return $this->belongsToMany('App\Models\Acteur');

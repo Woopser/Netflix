@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('acteur_film', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('films_id')->constrained();
-            $table->foreignId('acteurs_id')->constrained();
+            $table->foreignId('film_id')->constrained();
+            $table->foreignId('acteur_id')->constrained();
             $table->timestamps();
         });
     }
