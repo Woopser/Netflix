@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Acteur;
 use Illuminate\Support\Facades\Log;
+use App\Models\Film;
 
 class ActeursController extends Controller
 {
@@ -30,14 +31,30 @@ class ActeursController extends Controller
 
     public function createActeurFilm()
     {
-        $acteur = Acteur::all();
+        $acteurs = Acteur::all();
         $films = Film::all();
-        return view('acteur.createActeurFilm', compact('acteurs','films'));
+        return view('acteurs.createActeurFilm', compact('acteurs','films'));
     }
 
-    public function storeActeurFilm()
+    public function storeActeurFilm(Request $request)
     {
-        
+        try{
+            $acteur = Acteur::find($request->acteur_id);
+            $film = Film::find($request->film_id);
+
+            //Verifie si relation existe
+            if($acteur->films->contains($film)){
+                Log::debug("La relation existe deja");
+            }
+            else{
+                $acteur->films()->attach($film);
+                $acteur->save();
+            }
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+        }
+        return redirect()->route('films.index');
     }
 
     /**

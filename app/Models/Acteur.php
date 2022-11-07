@@ -11,7 +11,7 @@ class Acteur extends Model
     protected $fillable = ['nom', 'prenom', 'age', 'taille', 'image'];
 
     use HasFactory;
-    public function acteurs(){
+    public function films(){
         return $this->belongsToMany('App\Models\Film');
     }
 }

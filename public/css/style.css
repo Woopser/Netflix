@@ -283,3 +283,18 @@
     
      
   }
+
+#bouttonAj
+{
+  text-decoration: none;
+  background-color: #E50914 ;
+  color: #141414;
+  padding: 0.5%;
+  border-radius: 10px;
+}
+
+#formele
+{
+  display: block;
+  display: inline;
+} 

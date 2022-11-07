@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/cssNet.css">
-    <title>Ajout D'Acteurs</title>
-</head>
-<body>
+
+
     @extends('layouts.app')
 
 
@@ -16,17 +8,23 @@
 
 
     @section('contenu')
-    <form method="POST" action="{{ route('acteurs.store') }}">
+    <h1>Ajouter une relation Acteur-Film</h1>
+    <form method="POST" action="{{ route('acteursFilms.store') }}">
         @csrf
         <select name="acteur_id" id="acteur_id">
-            @foreach($acteurs as $acteurs)
-            <option value="{{ $acteur->id }}">{{$acteur->nom}}</option>
+            @foreach($acteurs as $acteur)
+            <option value="{{ $acteur->id }}">{{$acteur->prenom}}  {{$acteur->nom}}</option>
             @endforeach
         </select>
+
+        <select name="film_id" id="film_id">
+            @foreach($films as $film)
+            <option value="{{ $film->id }}">{{$film->nom}}</option>
+            @endforeach
+        </select>
+
         <button type="submit">Enregisterer</button>
 
     </form>
 
     @endsection
-</body>
-</html>

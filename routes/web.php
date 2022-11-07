@@ -20,9 +20,8 @@ use App\Http\Controllers\ActeursController;
 Route::get('films', 
 [FilmsController::class, 'index'])->name('films.index');
 
-Route::get('zoom', function () {
-    return view('zoom');
-});
+Route::get('films/zoom', 
+    [FilmsController::class, 'zoom'])->name('films.zoom');
 
 /*AFFICHER LE FORMULAIRE D'AJOUT D'UN ACTEUR*/
 Route::get('acteurs/create', 
@@ -46,5 +45,8 @@ Route::post('films',
 /*Afficher le form de creation de Acteur_film*/
 Route::get('acteurs/createActeurFilm', 
 [ActeursController::class, 'createActeurFilm'])->name('acteurs.createActeurFilm');
+
+Route::post('acteurs/createActeurFilm', 
+[ActeursController::class, 'storeActeurFilm'])->name('acteursFilms.store');
 
 

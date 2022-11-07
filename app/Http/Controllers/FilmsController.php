@@ -16,7 +16,14 @@ class FilmsController extends Controller
     public function index()
     {
         $films = Film::all();
-       return view('films.index', compact('films'));
+        $filmScience = Film::where('genre', '=', 'Science-Fiction')->get();
+        $filmHorreur = Film::where('genre', '=', 'Horreur')->get();
+       return view('films.index', compact('films','filmScience','filmHorreur'));
+    }
+
+    public function zoom()
+    {
+        return view('films.zoom');
     }
 
     /**
