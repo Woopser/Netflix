@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Film;
 use Illuminate\Support\Facades\Log;
+use App\Http\Requests\FilmRequest;
 
 class FilmsController extends Controller
 {
@@ -42,7 +43,7 @@ class FilmsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FilmRequest $request)
     {
         try{
             $film = new Film($request->all());
