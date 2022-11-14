@@ -23,6 +23,7 @@ class FilmsTableSeeder extends Seeder
                 'realisateur'=>'Les Wahowski',
                 'genre'=>'Science-Fiction',
                 'image'=>'image/Films/Matrix.jpeg',
+                'preview'=>'https://www.youtube.com/embed/kYzz0FSgpSU',
             ],
             [
                 'nom'=> 'SOS Fantômes',
@@ -31,6 +32,7 @@ class FilmsTableSeeder extends Seeder
                 'realisateur'=>'Ivan Reitman',
                 'genre'=>'Horreur',
                 'image'=>'image/Films/Ghost.jpg',
+                'preview'=>'https://www.youtube.com/embed/6hDkhw5Wkas',
 
             ],
             [
@@ -40,6 +42,7 @@ class FilmsTableSeeder extends Seeder
                 'realisateur'=>'IBM',
                 'genre'=>'Court-Métrage',
                 'image'=>'image/Films/ABoy.jpg',
+                'preview'=>'https://www.youtube.com/embed/oSCX78-8-q0',
             ],
             [
                 'nom'=> 'Alien',
@@ -48,6 +51,7 @@ class FilmsTableSeeder extends Seeder
                 'realisateur'=>'Ridley Scott',
                 'genre'=>'Horreur',
                 'image'=>'image/Films/Alien.jpeg',
+                'preview'=>'https://www.youtube.com/embed/jQ5lPt9edzQ',
             ],
             [
                 'nom'=> 'Avatar',
@@ -56,6 +60,7 @@ class FilmsTableSeeder extends Seeder
                 'realisateur'=>'James Cameron',
                 'genre'=>'Science-Fiction',
                 'image'=>'image/Films/Avatar.jpg',
+                'preview'=>'https://www.youtube.com/embed/5PSNL1qE6VY',
             ],
             [
                 'nom'=> 'La Chose',
@@ -64,6 +69,7 @@ class FilmsTableSeeder extends Seeder
                 'realisateur'=>'John Carpenter',
                 'genre'=>'Horreur',
                 'image'=>'image/Films/Thing.jpg',
+                'preview'=>'https://www.youtube.com/embed/5ftmr17M-a4',
             ],
             [
                 'nom'=> 'Parc Jurassique',
@@ -72,6 +78,7 @@ class FilmsTableSeeder extends Seeder
                 'realisateur'=>'Steven Spielberg',
                 'genre'=>'Horreur',
                 'image'=>'image/Films/JurassicPark.jpg',
+                'preview'=>'https://www.youtube.com/embed/lc0UehYemQA',
             ],
             [
                 'nom'=> 'Tenacisous D et le Médiator du Destin',
@@ -80,6 +87,7 @@ class FilmsTableSeeder extends Seeder
                 'realisateur'=>'Liam Lynch',
                 'genre'=>'Comédie',
                 'image'=>'image/Films/D.jpg',
+                'preview'=>'https://www.youtube.com/embed/2tvKDAW6Flk',
             ],
             [
                 'nom'=> 'Shrek',
@@ -88,6 +96,7 @@ class FilmsTableSeeder extends Seeder
                 'realisateur'=>'Andrew Adamson',
                 'genre'=>'Comédie',
                 'image'=>'image/Films/Shrek.jpg',
+                'preview'=>'https://www.youtube.com/embed/CwXOrWvPBPk"',
             ],
             [
                 'nom'=> 'La Guerres des Étoiles: Un nouvel espoir',
@@ -96,6 +105,7 @@ class FilmsTableSeeder extends Seeder
                 'realisateur'=>'Goerge Lucas',
                 'genre'=>'Science-Fiction',
                 'image'=>'image/Films/ANewHope.jpeg',
+                'preview'=>'https://www.youtube.com/embed/vZ734NWnAHA',
             ]
         
 

@@ -12,7 +12,7 @@
           <div class="box">
             @if(count($films))
               @foreach ($films as $film)
-              <a href="">
+              <a href="{{route('films.show', [$film])}}">
               <img src="{{$film->image}}" width="70%" height="100%">
               </a>  
       

@@ -22,11 +22,6 @@ class FilmsController extends Controller
        return view('films.index', compact('films','filmScience','filmHorreur'));
     }
 
-    public function zoom()
-    {
-        return view('films.zoom');
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -62,9 +57,9 @@ class FilmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Film $film)
     {
-        //
+        return view('films.show', compact('film'));
     }
 
     /**
@@ -75,7 +70,8 @@ class FilmsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $film = Film::findOrFail($id);
+        return view('films.modifier',compact('film'));
     }
 
     /**
@@ -85,9 +81,26 @@ class FilmsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FilmRequest $request, $id)
     {
-        //
+        try{
+            $film = Film::findorFail($id);
+            $film->nom = $request->nom;
+            $film->duree = $request->duree;
+            $film->preview = $request->preview;
+            $film->image = $request->image;
+            $film->cote = $request->cote;
+            $film->genre = $request->genre;
+            $film->realisateur = $request->realisateur;
+
+            $film->save();
+            return redirect()->route('films.index')->with('message','Modification de ' . $film->nom . ' réussi!');
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('films.index')->with('message','Modification de ' . $film->nom . ' échoué');
+        }
+        return redirect()->route('films.index');
     }
 
     /**

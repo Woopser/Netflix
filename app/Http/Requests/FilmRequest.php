@@ -41,6 +41,15 @@ class FilmRequest extends FormRequest
             'duree.required' => 'Le film doit avoir une durée.',
             'duree.min' => 'Le film doit avoir une durée de plus que 1 minute.',
             'cote.required' => 'La film doit avoir une cote',
+            'cote.min' => 'Le film ne peut pas etre coté moins que 0.1/10',
+            'cote.max' => 'Le film ne peut pas être coté plus de 10',
+            'realisateur.required' => 'Le film doit avoir un realisateur',
+            'realisateur.min' => 'Le realisateur ne peut pas avoir un nom de moins de 2 lettres.',
+            'realisateur.max' => 'Le realisateur ne peut pas avoir un nom qui excede 200 lettres.',
+            'genre.required' => 'Le film doit avoir un genre',
+            'genre.min' => 'Le genre doit contenir plus de 2 caractères',
+            'genre.max' => 'Le genre ne peut pas contenir plus de 200 caractères',
+            'image.required' => 'Une image est nécessaire',
         ];
     }
 }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('realisateur',100);
             $table->string('genre',100);
             $table->string('image', 1000);
+            $table->string('preview', 1000)->nullable();
             $table->timestamps();
         });
     }
