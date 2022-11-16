@@ -111,6 +111,19 @@ class FilmsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $film = Film::findOrFail($id);
+            //Si un film a des acteurs, on ne peut pas le supprimer
+            $film->acteurs()->detach();
+
+            $film->delete();
+
+            return redirect()->route('films.index')->with('message', 'Suppression de ' . $film->nom . ' réussi!');
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('films.index')->with('message', 'Suppression de ' . $film->nom . ' échoué!');
+        }
+        return redirect()->route('films.index');
     }
 }

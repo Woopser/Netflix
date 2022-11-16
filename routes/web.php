@@ -57,4 +57,8 @@ Route::get('/films/{id}/modifier/',
 Route::patch('/films/{id}/modifier',
 [FilmsController::class, 'update'])->name('films.update');
 
+/*Supprimer*/
+Route::delete('/films/{id}',
+[FilmsController::class, 'destroy'])->name('films.destroy');
+
 
