@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('usagers', function (Blueprint $table) {
             $table->id();
             $table->string('email',100);
-            $table->string('identifiant',100);
-            $table->float('nbrConnexion');
+            $table->string('password');
+            $table->string('identification');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

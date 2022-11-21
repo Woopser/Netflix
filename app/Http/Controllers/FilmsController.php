@@ -124,6 +124,6 @@ class FilmsController extends Controller
             Log::debug($e);
             return redirect()->route('films.index')->with('message', 'Suppression de ' . $film->nom . ' échoué!');
         }
-        return redirect()->route('films.index');
+        return redirect()->route('films.index');  
     }
 }
