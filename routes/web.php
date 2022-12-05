@@ -16,12 +16,13 @@ use App\Http\Controllers\ActeursController;
 */
 //bindingresolution
 
+Route::get('acteurs',
+[ActeursController::class, 'index'])->name('acteurs.index');
 
 Route::get('films', 
 [FilmsController::class, 'index'])->name('films.index');
 
-Route::get('films/{film}/', 
-    [FilmsController::class, 'show'])->name('films.show');
+
 
 /*AFFICHER LE FORMULAIRE D'AJOUT D'UN ACTEUR*/
 Route::get('acteurs/create', 
@@ -53,13 +54,32 @@ Route::post('acteurs/createActeurFilm',
 Route::get('/films/{id}/modifier/',
 [FilmsController::Class, 'edit'])->name('films.edit');
 
+/*Route edit pour acterur*/
+Route::get('/acteurs/{id}/modifier/',
+[ActeursController::Class, 'edit'])->name('acteurs.edit');
+
 /*Route pour modifiage de films 2*/
 Route::patch('/films/{id}/modifier',
 [FilmsController::class, 'update'])->name('films.update');
 
+/*Route pour modifiage d'acteurs*/
+Route::patch('/acteurs/{id}/modifier',
+[ActeursController::class, 'update'])->name('acteurs.update');
+
 /*Supprimer*/
 Route::delete('/films/{id}',
 [FilmsController::class, 'destroy'])->name('films.destroy');
+
+Route::delete('/acteurs/{id}',
+[ActeursController::class, 'destroy'])->name('acteurs.destroy');
+
+//Route pour show film.
+Route::get('films/{film}/', 
+[FilmsController::class, 'show'])->name('films.show');
+
+//Route pour acteur show
+Route::get('acteurs/{acteur}/', 
+[ActeursController::class, 'show'])->name('acteurs.show');
 
 /*Identification, <usagers></usagers>*/
 

@@ -7,6 +7,7 @@ use App\Models\Acteur;
 use Illuminate\Support\Facades\Log;
 use App\Models\Film;
 
+
 class ActeursController extends Controller
 {
     /**
@@ -16,7 +17,8 @@ class ActeursController extends Controller
      */
     public function index()
     {
-        //
+        $acteurs = Acteur::all();
+        return view('acteurs.index', compact('acteurs'));
     }
 
     /**
@@ -83,9 +85,9 @@ class ActeursController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Acteur $acteur)
     {
-        //
+        return view('acteurs.show', compact('acteur'));
     }
 
     /**
@@ -96,7 +98,8 @@ class ActeursController extends Controller
      */
     public function edit($id)
     {
-        //
+        $acteur = Acteur::findOrFail($id);
+        return view('acteurs.modifier',compact('acteur'));
     }
 
     /**
@@ -108,7 +111,22 @@ class ActeursController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $acteur = Acteur::findorFail($id);
+            $acteur->nom = $request->nom;
+            $acteur->prenom = $request->prenom;
+            $acteur->taille = $request->taille;
+            $acteur->image = $request->image;
+            $acteur->age = $request->age;
+
+            $acteur->save();
+            return redirect()->route('acteurs.index')->with('message','Modification de ' . $acteur->nom . ' réussi!');
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('acteurs.index')->with('message','Modification de ' . $acteur->nom . ' échoué');
+        }
+        return redirect()->route('acteurs.index');
     }
 
     /**
@@ -119,6 +137,19 @@ class ActeursController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $acteur = Acteur::findOrFail($id);
+            //Si un acteur a des acteurs, on ne peut pas le supprimer
+            $acteur->films()->detach();
+
+            $acteur->delete();
+
+            return redirect()->route('acteurs.index')->with('message', 'Suppression de ' . $acteur->nom . ' réussi!');
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('acteurs.index')->with('message', 'Suppression de ' . $acteur->nom . ' échoué!');
+        }
+        return redirect()->route('acteurs.index');
     }
 }

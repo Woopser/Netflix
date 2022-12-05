@@ -56,9 +56,7 @@
     
     <br><br>
           <div style="text-align: center">
-            <a id="bouttonAj" href="{{ route('acteurs.create') }}">Ajouter un acteur</a>
             <a id="bouttonAj" href="{{ route('films.create') }}">Ajouter un film</a>
-            <a id="bouttonAj" href="{{ route('acteurs.createActeurFilm') }}">Ajouter une relation</a>
           </div>
 
      
