@@ -14,7 +14,7 @@
       <nav class="main-nav">                
         <a href="/films">Films</a>
         <a href="/acteurs">Acteurs</a>
-        <a href="#movies">Movies</a>
+        <a href="/usagers">Usagers</a>
         <a href="#originals">Originals</a>
         <a href="#">Recently Added</a>
         <a target="_blank" href="https://codepen.io/cb2307/full/NzaOrm">Portfolio</a>        
@@ -22,7 +22,10 @@
       <nav class="sub-nav">
         <a href="#"><i class="fas fa-search sub-nav-logo"></i></a>
         <a href="#"><i class="fas fa-bell sub-nav-logo"></i></a>
-        <a href="#">Account</a>        
+        <form method="POST" action="{{route('logout')}}">
+          @csrf
+          <button id="bouttonAj" type="submit">Deconnexion</button>
+        </form>        
       </nav>      
     </header>
     <!-- END OF HEADER -->

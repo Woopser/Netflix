@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Usager;
+use App\Models\Film;
+
 
 class UsagersController extends Controller
 {
@@ -13,7 +18,8 @@ class UsagersController extends Controller
      */
     public function index()
     {
-        //
+        $usagers = Usager::all();
+        return view('usagers.index', compact('usagers'));
     }
 
     /**
@@ -24,6 +30,32 @@ class UsagersController extends Controller
     public function create()
     {
         //
+    }
+
+    //Show login form
+    public function showLoginForm()
+    {
+        return view('usagers.form');
+    }
+
+    //Login
+    public function login(Request $request)
+    {
+        $reussi = Auth::attempt(['email' =>$request->email, 'password'=>$request->password]);
+
+        if($reussi){
+            return redirect()->route('films.index')->with('message',"Connexion réussie");
+        }
+        else{
+            return redirect()->route('login')->withErrors(['Informations invalides']);
+        }
+    }
+
+    //Logout
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login')->with('message', 'Deconnecté');
     }
 
     /**
@@ -79,6 +111,19 @@ class UsagersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $usager = Usager::findOrFail($id);
+            //Si un usager a des usagers, on ne peut pas le supprimer
+            //$usager->films()->detach();
+
+            $usager->delete();
+
+            return redirect()->route('usagers.index')->with('message', 'Suppression de ' . $usager->nom . ' réussi!');
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('usagers.index')->with('message', 'Suppression de ' . $usager->nom . ' échoué!');
+        }
+        return redirect()->route('usagers.index');
     }
 }

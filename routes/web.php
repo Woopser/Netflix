@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilmsController;
 use App\Http\Controllers\ActeursController;
+use App\Http\Controllers\UsagersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,56 +23,71 @@ Route::get('acteurs',
 Route::get('films', 
 [FilmsController::class, 'index'])->name('films.index');
 
+/*Identification, <usagers></usagers>*/
+Route::get('login',
+[UsagersController::class, 'showLoginForm'])->name('login');
 
+Route::post('login',
+[UsagersController::class, 'login'])->name('usagers.login');
+
+Route::post('logout',
+[UsagersController::class, 'logout'])->name('logout');
+
+/*Usager CRUD*/
+Route::get('usagers',
+[UsagersController::class, 'index'])->name('usagers.index');
 
 /*AFFICHER LE FORMULAIRE D'AJOUT D'UN ACTEUR*/
 Route::get('acteurs/create', 
-[ActeursController::class, 'create'])->name('acteurs.create');
+[ActeursController::class, 'create'])->name('acteurs.create')->middleware('auth');
 
 /*Affiche le form pour ajout de film*/
 Route::get('films/create', 
-[FilmsController::class, 'create'])->name('films.create');
+[FilmsController::class, 'create'])->name('films.create')->middleware('auth');
 
 
 
 /*Traiter les champs du form*/
 Route::post('acteurs', 
-[ActeursController::class, 'store'])->name('acteurs.store');
+[ActeursController::class, 'store'])->name('acteurs.store')->middleware('auth');
 
 /*Traite les champ de film*/ 
 Route::post('films', 
-[FilmsController::class, 'store'])->name('films.store');
+[FilmsController::class, 'store'])->name('films.store')->middleware('auth');
 
 
 /*Afficher le form de creation de Acteur_film*/
 Route::get('acteurs/createActeurFilm', 
-[ActeursController::class, 'createActeurFilm'])->name('acteurs.createActeurFilm');
+[ActeursController::class, 'createActeurFilm'])->name('acteurs.createActeurFilm')->middleware('auth');
 
 Route::post('acteurs/createActeurFilm', 
-[ActeursController::class, 'storeActeurFilm'])->name('acteursFilms.store');
+[ActeursController::class, 'storeActeurFilm'])->name('acteursFilms.store')->middleware('auth');
 
 /*Route du modifiage de film*/
 Route::get('/films/{id}/modifier/',
-[FilmsController::Class, 'edit'])->name('films.edit');
+[FilmsController::Class, 'edit'])->name('films.edit')->middleware('auth');
 
 /*Route edit pour acterur*/
 Route::get('/acteurs/{id}/modifier/',
-[ActeursController::Class, 'edit'])->name('acteurs.edit');
+[ActeursController::Class, 'edit'])->name('acteurs.edit')->middleware('auth');
 
 /*Route pour modifiage de films 2*/
 Route::patch('/films/{id}/modifier',
-[FilmsController::class, 'update'])->name('films.update');
+[FilmsController::class, 'update'])->name('films.update')->middleware('auth');
 
 /*Route pour modifiage d'acteurs*/
 Route::patch('/acteurs/{id}/modifier',
-[ActeursController::class, 'update'])->name('acteurs.update');
+[ActeursController::class, 'update'])->name('acteurs.update')->middleware('auth');
 
 /*Supprimer*/
 Route::delete('/films/{id}',
-[FilmsController::class, 'destroy'])->name('films.destroy');
+[FilmsController::class, 'destroy'])->name('films.destroy')->middleware('auth');
 
 Route::delete('/acteurs/{id}',
-[ActeursController::class, 'destroy'])->name('acteurs.destroy');
+[ActeursController::class, 'destroy'])->name('acteurs.destroy')->middleware('auth');
+
+Route::delete('/usagers/{id}',
+[UsagersController::class, 'destroy'])->name('usagers.destroy')->middleware('auth');
 
 //Route pour show film.
 Route::get('films/{film}/', 
@@ -81,6 +97,5 @@ Route::get('films/{film}/',
 Route::get('acteurs/{acteur}/', 
 [ActeursController::class, 'show'])->name('acteurs.show');
 
-/*Identification, <usagers></usagers>*/
 
 
