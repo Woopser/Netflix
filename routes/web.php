@@ -71,6 +71,19 @@ Route::get('/films/{id}/modifier/',
 Route::get('/acteurs/{id}/modifier/',
 [ActeursController::Class, 'edit'])->name('acteurs.edit')->middleware('auth');
 
+/*route de ajouter user*/
+Route::post('usagers', 
+[UsagersController::class, 'store'])->name('usagers.store')->middleware('auth');
+Route::get('usagers/create', 
+[UsagersController::class, 'create'])->name('usagers.create')->middleware('auth');
+
+/*Route pour modifiage de user*/
+Route::get('/usager/{id}/modifier/',
+[UsagersController::Class, 'edit'])->name('usagers.edit')->middleware('auth');
+Route::patch('/usagers/{id}/modifier',
+[UsagersController::class, 'update'])->name('usagers.update')->middleware('auth');
+
+
 /*Route pour modifiage de films 2*/
 Route::patch('/films/{id}/modifier',
 [FilmsController::class, 'update'])->name('films.update')->middleware('auth');

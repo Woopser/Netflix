@@ -18,6 +18,8 @@
                     @csrf
                     @method('DELETE')
                     <button id="bouttonAj" type="submit">Supprimer l'usager</button>
+                    <a id="bouttonAj" href="{{ route('usagers.create') }}">Ajouter un usager</a>
+                    <a id="bouttonAj" href="{{ route('usagers.edit', [$usager->id])  }}">Modifier un usager</a>
                 </form>
               </div>
       
@@ -29,8 +31,8 @@
 
     <br><br>
           {{-- <div style="text-align: center">
-            <a id="bouttonAj" href="{{ route('usagers.create') }}">Ajouter un usager</a>
-            <a id="bouttonAj" href="{{ route('usagers.createActeurFilm') }}">Ajouter une relation</a>
+           
+            
           </div> --}}
 
 @endsection

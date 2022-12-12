@@ -29,7 +29,7 @@ class UsagersController extends Controller
      */
     public function create()
     {
-        //
+        return view('usagers.create');
     }
 
     //Show login form
@@ -66,7 +66,15 @@ class UsagersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $usager = new Usager($request->all());
+            $usager->save();
+            return redirect()->route('films.index');
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('films.index');
+        }
     }
 
     /**
@@ -88,7 +96,8 @@ class UsagersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usager = Usager::findOrFail($id);
+        return view('usagers.modifier',compact('usager'));
     }
 
     /**
@@ -100,7 +109,18 @@ class UsagersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $usager = Usager::findorFail($id);
+            $usager->email = $request->email;
+            $usager->identification = $request->identification;
+            $usager->save();
+            return redirect()->route('usagers.index')->with('message','Modification de ' . $usager->email . ' réussi!');
+        }
+        catch(\Throwable $e){
+            Log::debug($e);
+            return redirect()->route('usagers.index')->with('message','Modification de ' . $usager->nom . ' échoué');
+        }
+        return redirect()->route('usagers.index');
     }
 
     /**
